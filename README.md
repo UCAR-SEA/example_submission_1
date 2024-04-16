@@ -1,7 +1,7 @@
 # !!! This repo is work in progress!!!
 
 ![SEA 2024 Logo](assets/logo_3.png)
-
+ 
 ># SEA ISS 2024 Notebook Template 📓
 
 >## Overview
