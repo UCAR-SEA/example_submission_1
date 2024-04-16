@@ -2,10 +2,10 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title         : Notebook Template
-author        : Negin Sobhani, SEA Software Engineering Assembly Committee
+author        : Negin Sobhani,  SEA Software Engineering Assembly Committee
 copyright     : "2024"  # Copyright year to be placed in the footer
 logo          : assets/logo_3.png
-email         : "negins.ucar.edu"
+email         : "negins@ucar.edu"
 
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
@@ -14,11 +14,11 @@ exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoin
 # See https://jupyterbook.org/content/execute.html
 
 execute:
-  execute_notebooks         : 'auto'
+  execute_notebooks         : 'off'
   timeout : 600
   exclude_patterns: # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
     - '*dont-execute*'
-  allow_erros: true
+  allow_errors: true
   stderr_output : remove-warn
 
 # Add a few extensions to help with parsing content
@@ -55,12 +55,12 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  #favicon                   : ""  # A path to a favicon image
+  favicon                   : ""  # A path to a favicon image
   use_repository_button : true
   use_edit_page_button  : true
   use_issues_button     : true
   home_page_in_navbar   : true
-  #use_multitoc_numbering    : true   # Continuous numbering across parts/chapters
+  use_multitoc_numbering    : true   # Continuous numbering across parts/chapters
 
   comments:
     hypothesis              : false
@@ -73,8 +73,9 @@ sphinx:
     html_last_updated_fmt : '%-d %B %Y'
     html_theme            : sphinx_pythia_theme
     html_permalinks_icon: '<i class="fas fa-link"></i>'
+    bibtex_reference_style: author_year
     html_theme_options:
-      #home_page_in_toc: true
+      home_page_in_toc: true
       repository_url: https://github.com/UCAR-SEA/SEA-ISS-Template # Online location of your book
       repository_branch: main  
       navbar_align: right
@@ -83,18 +84,21 @@ sphinx:
       use_edit_page_button: true
       use_download_button: true
       use_fullscreen_button: true
-      github_url: https://github.com/SEA-UCAR
-
+      use_binder_button: true
+      github_url: https://github.com/UCAR-SEA
+      launch_buttons:
+        binderhub_url: https://mybinder.org
+        notebook_interface: jupyterlab
       extra_navbar: |
-        <div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div>Theme by <a href="https://projectpythia.org/">Project Pythia</a>
+        <div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div>Theme adapted from <a href="https://projectpythia.org/">Project Pythia</a>
 
       navbar_links:
         - name: SEA Home
           url: https://sea.ucar.edu
         - name: SEA Conference
           url: https://sea.ucar.edu/conference/2024
-        - name: 'About this Template'
-          url: https://jupyterbook.org/en/stable/intro.html
+        - name: 'How to Use this Template'
+          url: https://ucar-sea.github.io/SEA-ISS-Template/submission-guidelines.html
         - name: Contact Us
           url: https://www2.cisl.ucar.edu/form/contact
 
