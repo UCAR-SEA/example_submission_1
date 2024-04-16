@@ -2,27 +2,32 @@ name: JupyterBook
 #name: Build and Publish JupyterBook to GitHub Pages
 
 on:
-  [push]
+  push:
+    branches: [ main ]
+
+  
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.11
-    - name: Install Python dependencies
+        python-version: 3.7 
+
+    - name: Install dependencies
       run: |
-        sudo apt-get install python3-pip
-        #pip install git+git://github.com/executablebookproject/cli.git#egg=master
-        pip install ghp-import
-        #pip install -r book/requirements.txt
-        pip install jupyter-book
+        python -m pip install --upgrade pip
         pip install sphinx-pythia-theme==2022.3.29
-        pip install numpy
+        pip install jupyter-book
+        pip install -r requirements.txt
         PATH="${PATH}:${HOME}/.local/bin"
    # - name: Build book TOC file 
    #   run: |
@@ -30,11 +35,18 @@ jobs:
     - name: Build book HTML 
       run: |
         jupyter-book build .
-    - name: Push _build/html to gh-pages
-      run: |
-        sudo chown -R $(whoami):$(whoami) .
-        git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-        git config --global user.name "$GITHUB_ACTOR"
-        git remote set-url origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
-        ls -lrt
-        ghp-import _build/html -f -p -n
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./_build/html
+  
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
