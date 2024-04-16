@@ -21,9 +21,9 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: 3.9
-        
-    - name: Install Python dependencies
-        run: |
+
+    - name: Install dependencies
+      run: |
           sudo apt-get install python3-pip
           pip install ghp-import
           pip install jupyter-book
@@ -35,8 +35,10 @@ jobs:
           pip install sphinxcontrib-serializinghtml==1.1.5
           pip install sphinxcontrib-qthelp==1.0.3
           PATH="${PATH}:${HOME}/.local/bin"
-      - name: Show Sphinx versions
-        run: |
+          
+          
+    - name: Show Sphinx version
+      run: |
           pip freeze |grep -i sphinx
 
           
@@ -46,6 +48,7 @@ jobs:
     - name: Build book HTML 
       run: |
         jupyter-book build .
+        
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
