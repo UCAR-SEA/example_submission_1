@@ -21,7 +21,7 @@ jobs:
         pip install ghp-import
         #pip install -r book/requirements.txt
         pip install jupyter-book
-        pip install sphinx-pythia-theme
+        pip install sphinx-pythia-theme==2022.3.29
         pip install numpy
         PATH="${PATH}:${HOME}/.local/bin"
    # - name: Build book TOC file 
