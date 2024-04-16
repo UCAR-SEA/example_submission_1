@@ -55,12 +55,12 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  favicon                   : ""  # A path to a favicon image
+  #favicon                   : ""  # A path to a favicon image
   use_repository_button : true
   use_edit_page_button  : true
   use_issues_button     : true
   home_page_in_navbar   : true
-  use_multitoc_numbering    : true   # Continuous numbering across parts/chapters
+  #use_multitoc_numbering    : true   # Continuous numbering across parts/chapters
 
   comments:
     hypothesis              : false
@@ -74,7 +74,7 @@ sphinx:
     html_theme            : sphinx_pythia_theme
     html_permalinks_icon: '<i class="fas fa-link"></i>'
     html_theme_options:
-      home_page_in_toc: true
+      #home_page_in_toc: true
       repository_url: https://github.com/UCAR-SEA/SEA-ISS-Template # Online location of your book
       repository_branch: main  
       navbar_align: right
