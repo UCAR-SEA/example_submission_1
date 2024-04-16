@@ -40,6 +40,8 @@ jobs:
     - name: Show Sphinx version
       run: |
           pip freeze |grep -i sphinx
+          pip freeze |grep -i pythia
+
 
           
    # - name: Build book TOC file 
