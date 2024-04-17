@@ -74,6 +74,7 @@ sphinx:
     html_theme            : sphinx_pythia_theme
     html_permalinks_icon: '<i class="fas fa-link"></i>'
     bibtex_reference_style: author_year
+    bibtex_bibfiles: "your_reference_file.bib"
     html_theme_options:
       home_page_in_toc: true
       repository_url: https://github.com/UCAR-SEA/SEA-ISS-Template # Online location of your book
